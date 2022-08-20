@@ -6,7 +6,7 @@ var data = require('./data/test.json');
 app.set('view engine','ejs')
 
 //this will allow us to serve up static files, CSS, images & JS
-app.use(express.static(__dirname));
+app.use(express.static('images'));
 
 app.get('/', (req, res) => {
   var title = "My Home Page";
@@ -27,7 +27,7 @@ app.get('/about', (req, res) => {
 })
 
 app.get('/users', (req, res) => {
-  var title = "Our Users";
+  var title = "My Users Page";
   var heading = "My Website"
   res.render('users/index',{
     'title': title,
@@ -48,13 +48,31 @@ app.get('/users/view/:id', function(req, res) {
 });
 
 
-app.get('/contact', (req, res) => {
-  var title = "My Contact Page";
+app.get('/tech', (req, res) => {
+  var title = "My Journey Learning Tech";
   var heading = "My Website"
-  res.render('pages/contact',{
+  res.render('pages/tech',{
     'title':title,
     'heading':heading
-  })
+  });
+})
+
+app.get('/travel', (req, res) => {
+  var title = "Where To Next?";
+  var heading = "My Website"
+  res.render('pages/index',{
+    'title':title,
+    'heading':heading
+  });
+})
+
+app.get('/culture', (req, res) => {
+  var title = "Samoan Culture";
+  var heading = "My Website"
+  res.render('pages/index',{
+    'title':title,
+    'heading':heading
+  });
 })
 
 app.listen(port, () => {
